@@ -1,0 +1,103 @@
+/**
+ * Copyright 2025 Comcast Cable Communications Management, LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#ifndef WLAN_EXT_EMU_STA_MGR_H
+#define WLAN_EXT_EMU_STA_MGR_H
+
+#include "collection.h"
+#include "wifi_base.h"
+#include "wifi_hal.h"
+#include "wlan_emu_common.h"
+#include "wlan_emu_msg_data.h"
+#include <cstdio>
+
+class wlan_ext_emu_sta_mgr_t {
+    hash_map_t *m_sta_map;
+    wifi_hal_capability_t *m_cap;
+    queue_t *m_sta_info_map; // sta_info_t
+    unsigned int m_sta_info_count;
+    unsigned int m_dev_status[DEV_STATUS_ARR_SZ];
+    int find_first_free_dev();
+    void set_dev_busy(unsigned int dev_id);
+    void set_dev_free(unsigned int dev_id);
+
+    hash_map_t *m_eth_cli_map;
+    unsigned int m_eth_cli_count;
+
+    inline static void create_key(sta_key_t key, unsigned int dev_id, unsigned int test_id)
+    {
+        snprintf(key, sizeof(sta_key_t), "%d-%d", test_id, dev_id);
+    }
+
+    inline unsigned int get_test_id_from_key(sta_key_t key)
+    {
+        unsigned int test_id, dev_id;
+
+        sscanf(key, "%d-%d", &test_id, &dev_id);
+        return test_id;
+    }
+
+    inline unsigned int get_dev_id_from_key(sta_key_t key)
+    {
+        unsigned int test_id, dev_id;
+
+        sscanf(key, "%d-%d", &test_id, &dev_id);
+        return dev_id;
+    }
+
+public:
+    int init(wifi_hal_capability_t *sta_hal_cap);
+    int start();
+    void stop();
+
+    int add_sta(sta_test_t *sta_test_config);
+    sta_info_t *get_devid_sta_info(unsigned int dev_id);
+    void remove_sta(sta_test_t *sta_test);
+
+    int get_sta_info_count()
+    {
+        return m_sta_info_count;
+    }
+
+    queue_t *get_sta_info_map()
+    {
+        return m_sta_info_map;
+    }
+
+    int init_eth_interfaces();
+
+    hash_map_t *get_eth_map()
+    {
+        return m_eth_cli_map;
+    }
+
+    int get_eth_cli_info_count()
+    {
+        return m_eth_cli_count;
+    }
+
+    int set_eth_cli_info_count(int count)
+    {
+        m_eth_cli_count = count;
+    }
+
+    wlan_ext_emu_sta_mgr_t();
+    ~wlan_ext_emu_sta_mgr_t();
+};
+
+#endif //_WLAN_EXT_EMU_STA_MGR_H
