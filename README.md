@@ -17,8 +17,7 @@
 ### **License Requirements** ###
 1. Before RDK accepts your code into the project you must sign the RDK [Contributor License Agreement (CLA)](https://developer.rdkcentral.com/source/contribute/contribute/before_you_contribute/).
 
-2. License for this project is included in the root directory and there shouldn't be any additional license file in any of the subfolders.
-<br><br>
+2. License for this project is included in the root directory
 
 ### **How to contribute?** ###
 1. [Fork](https://docs.github.com/en/github/getting-started-with-github/quickstart/fork-a-repo) the repository, commit your changes, build and test it in at least one approved test platform/device.

@@ -297,7 +297,7 @@ typedef struct {
     char output_file_name[128];
     int stop_log_step_number;
     bool is_stat_response_type_set;
-    uint get_stats_count = 0;
+    unsigned int get_stats_count = 0;
 } wifi_stats_get_t;
 
 typedef struct {
@@ -587,7 +587,7 @@ typedef struct {
 } eth_lan_interface_t;
 
 typedef struct {
-    uint step_number;
+    unsigned int step_number;
 } step_number_entry_t;
 
 typedef struct {
