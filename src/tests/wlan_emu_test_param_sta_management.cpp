@@ -798,12 +798,8 @@ int test_step_param_sta_management::step_timeout()
             wlan_emu_print(wlan_emu_log_level_info,
                 "%s:%d: Test duration of %d  completed for step %d\n", __func__, __LINE__,
                 step->execution_time, step->step_number);
-            // Here if its associated only remove it if not will be handled by step_remove
-            if (step->u.sta_test->is_station_associated == true) {
-                step->m_sim_sta_mgr->remove_sta(step->u.sta_test);
-                step->u.sta_test->is_station_associated = false;
-                step->u.sta_test->is_decoded = false;
-            }
+            step->m_sim_sta_mgr->remove_sta(step->u.sta_test);
+            step->u.sta_test->is_decoded = false;
             return RETURN_OK;
         }
 

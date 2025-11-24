@@ -692,7 +692,8 @@ int wlan_emu_ui_mgr_t::validate_iperf_options(std::string args)
     std::vector<char *> argv;
     for (const auto &t : tokens) {
         auto buf = std::make_unique<char[]>(t.size() + 1);
-        std::strcpy(buf.get(), t.c_str());
+        std::strncpy(buf.get(), t.c_str(), t.size());
+        buf[t.size()] = '\0';
         argv.push_back(buf.get());
         string_storage.push_back(std::move(buf));
     }
@@ -3753,7 +3754,10 @@ unsigned int wlan_emu_ui_mgr_t::upload_results()
     count = queue_count(test_cov_cases_q);
     if (count == 0) {
         wlan_emu_print(wlan_emu_log_level_err, "%s:%d: queue count is 0\n", __func__, __LINE__);
-        fclose(res_output_file_fp);
+        if (res_output_file_fp != NULL) {
+            fclose(res_output_file_fp);
+            res_output_file_fp = NULL;
+        }
         return RETURN_ERR;
     }
 

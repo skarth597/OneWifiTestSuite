@@ -30,96 +30,9 @@
 extern "C" {
 #endif
 
-#define WLAN_EMU_INTF_NAME_SZ 64
-#define WLAN_EMU_BEACON_SZ 4096
-
-#define WLAN_EMU_HT_MCS_MASK_LEN 10
+#define WLAN_EMU_INTF_NAME_SZ   64
+#define WLAN_EMU_BEACON_SZ      4096
 #define ETH_ALEN 6
-
-struct wlan_emu_vht_mcs_info {
-    unsigned short rx_mcs_map;
-    unsigned short rx_highest;
-    unsigned short tx_mcs_map;
-    unsigned short tx_highest;
-};
-
-struct ieee80211_vht_cap {
-    unsigned long vht_cap_info;
-    struct wlan_emu_vht_mcs_info supp_mcs;
-};
-
-struct wlan_emu_mcs_info {
-    char rx_mask[WLAN_EMU_HT_MCS_MASK_LEN];
-    unsigned short rx_highest;
-    char tx_params;
-    char reserved[3];
-};
-
-struct wlan_emu_ht_cap {
-    unsigned short cap_info;
-    char ampdu_params_info;
-    struct wlan_emu_mcs_info mcs;
-    unsigned short extended_ht_cap_info;
-    unsigned long tx_BF_cap_info;
-    char antenna_selection_info;
-};
-
-struct wlan_emu_bitrate_mask {
-    struct {
-        unsigned int legacy;
-        short ht_mcs[WLAN_EMU_HT_MCS_MASK_LEN];
-        unsigned short vht_mcs[NL80211_VHT_NSS_MAX];
-        enum nl80211_txrate_gi gi;
-    } control[NUM_NL80211_BANDS];
-};
-
-struct wlan_emu_crypto_settings {
-    unsigned int wpa_versions;
-    unsigned int cipher_group;
-    int n_ciphers_pairwise;
-    unsigned int ciphers_pairwise[NL80211_MAX_NR_CIPHER_SUITES];
-    int n_akm_suites;
-    unsigned int akm_suites[NL80211_MAX_NR_AKM_SUITES];
-    bool control_port;
-    unsigned short control_port_ethertype;
-    bool control_port_no_encrypt;
-    bool control_port_over_nl80211;
-    struct key_params *wep_keys;
-    int wep_tx_key;
-    const u8 *psk;
-    const u8 *sae_pwd;
-    char sae_pwd_len;
-};
-
-struct ieee80211_he_cap_elem {
-    char mac_cap_info[6];
-    char phy_cap_info[11];
-};
-
-struct wlan_emu_beacon_data {
-    const u8 *head, *tail;
-    const u8 *beacon_ies;
-    const u8 *proberesp_ies;
-    const u8 *assocresp_ies;
-    const u8 *probe_resp;
-    const u8 *lci;
-    const u8 *civicloc;
-    char ftm_responder;
-    size_t head_len, tail_len;
-    size_t beacon_ies_len;
-    size_t proberesp_ies_len;
-    size_t assocresp_ies_len;
-    size_t probe_resp_len;
-    size_t lci_len;
-    size_t civicloc_len;
-};
-
-struct wlan_emu_chan_def {
-    struct ieee80211_channel *chan;
-    enum nl80211_chan_width width;
-    unsigned int center_freq1;
-    unsigned int center_freq2;
-};
 
 typedef enum {
     wlan_emu_emu80211_ctrl_tstart,
@@ -170,8 +83,6 @@ typedef struct {
     int ifindex;
     int phy_index;
     mac_address_t macaddr;
-    struct wlan_emu_chan_def chandef;
-    struct wlan_emu_beacon_data beacon;
     char *beacon_head;
     size_t head_len;
     char *beacon_tail;

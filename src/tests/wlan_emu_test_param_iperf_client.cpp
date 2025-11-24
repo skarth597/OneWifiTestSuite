@@ -381,6 +381,12 @@ int test_step_param_iperf_client::encode_external_iperf_client_start_subdoc(
             client_interface_step->u.sta_test->ip_address.c_str(),
             client_interface_step->u.sta_test->key);
 
+        if (client_interface_step->u.sta_test->ip_address.empty() ||
+            client_interface_step->u.sta_test->ip_address.find_first_not_of(' ') == std
+::string::npos) {
+            step->m_ui_mgr->cci_error_code = EEXTAGENT;
+            return RETURN_ERR;
+        }
         client_cmd = std::string(step->u.iperf_client->u.start_conf.cmd_options) +
             std::string(" -B ") + client_interface_step->u.sta_test->ip_address +
             std::string(" -c ") + server_ip_address;
