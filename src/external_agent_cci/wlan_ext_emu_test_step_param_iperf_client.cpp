@@ -56,10 +56,11 @@ int wlan_ext_test_step_param_iperf_client::wlan_ext_step_execute()
             __func__, __LINE__, step->step_number, iperf_client_cmd.c_str());
 
         if (step->u.iperf_client->interface_type == interface_type_ethernet) {
-            wlan_emu_print(wlan_emu_log_level_dbg, "%s:%d: In ethernet namespace\n", __func__, __LINE__);
-            //list_interfaces_in_namespace();
+            wlan_emu_print(wlan_emu_log_level_dbg, "%s:%d: In ethernet namespace\n", __func__,
+                __LINE__);
+            // list_interfaces_in_namespace();
             ext_emu->enter_namespace("/var/run/netns/ots");
-            //list_interfaces_in_namespace();
+            // list_interfaces_in_namespace();
         }
 
         int result = execute_process_once(iperf_client_cmd,
@@ -72,7 +73,7 @@ int wlan_ext_test_step_param_iperf_client::wlan_ext_step_execute()
         }
         if (step->u.iperf_client->interface_type == interface_type_ethernet) {
             ext_emu->leave_namespace();
-            //list_interfaces_in_namespace();
+            // list_interfaces_in_namespace();
         }
         cJSON_AddItemToArray(step->artifact_json_list,
             cJSON_CreateString(step->u.iperf_client->u.start_conf.result_file));
