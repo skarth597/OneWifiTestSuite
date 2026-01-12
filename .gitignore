@@ -1,0 +1,28 @@
+# Build directories
+build/
+build_*/
+
+# Compilation database
+compile_commands.json
+
+# Object files
+*.o
+*.obj
+*.so
+*.a
+
+# Executables
+*.out
+cci
+cci_cli
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
