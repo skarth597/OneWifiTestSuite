@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic -Wl,--dependency-file=CMakeFiles/cci_cli.dir/link.d CMakeFiles/cci_cli.dir/src/cci_cli/cci_cli.o -o cci_cli
