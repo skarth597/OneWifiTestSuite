@@ -1,0 +1,1 @@
+/home/runner/work/OneWifiTestSuite/.codeql-scratch/dbs/cpp/working/autobuild/bin/cc -O3 -DNDEBUG -rdynamic -Wl,--dependency-file=CMakeFiles/cci_cli.dir/link.d CMakeFiles/cci_cli.dir/src/cci_cli/cci_cli.o -o cci_cli

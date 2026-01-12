@@ -1,0 +1,14 @@
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/CMakeFiles/cci_cli.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/CMakeFiles/edit_cache.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/CMakeFiles/rebuild_cache.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/CMakeFiles/list_install_components.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/CMakeFiles/install.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/CMakeFiles/install/local.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/CMakeFiles/install/strip.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/src/gateway_cci/CMakeFiles/cci.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/src/gateway_cci/CMakeFiles/edit_cache.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/src/gateway_cci/CMakeFiles/rebuild_cache.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/src/gateway_cci/CMakeFiles/list_install_components.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/src/gateway_cci/CMakeFiles/install.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/src/gateway_cci/CMakeFiles/install/local.dir
+/home/runner/work/OneWifiTestSuite/OneWifiTestSuite/_codeql_build_dir/src/gateway_cci/CMakeFiles/install/strip.dir
